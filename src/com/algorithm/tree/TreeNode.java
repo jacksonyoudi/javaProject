@@ -1,13 +1,36 @@
 package com.algorithm.tree;
 
-public class TreeNode {
-    private int val;
-    private TreeNode left;
-    private TreeNode right;
+import java.util.ArrayList;
+import java.util.List;
 
-    public TreeNode(int val) {
-        this.val = val;
-        this.left = null;
-        this.right = null;
+/**
+ * Definition for a binary tree node.
+ */
+
+
+public class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+
+    TreeNode(int x) {
+        val = x;
+    }
+}
+
+class Solution {
+    List<Integer> res = new ArrayList<>();
+
+    public List<Integer> inorderTraversal(TreeNode root) {
+        if (root != null) {
+            if (root.left != null) {
+                inorderTraversal(root.left);
+            }
+            res.add(root.val);
+            if (root.right != null) {
+                inorderTraversal(root.right);
+            }
+        }
+        return res;
     }
 }
